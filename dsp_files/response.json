@@ -1,0 +1,3 @@
+Open the following URL in a browser and log in:
+ https://mhp-management-und-it-1.authentication.eu10.hana.ondemand.com/oauth/authorize?response_type=code&client_id=sb-44dba7c0-42c5-4ad7-abbc-67890b7f9e15%21b112403%7Cclient%21b3650
+Paste the ?code= value here: 
