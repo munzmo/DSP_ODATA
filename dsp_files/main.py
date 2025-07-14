@@ -38,14 +38,14 @@ def exchange_code_for_token(code: str) -> str:
 
 # tabname: str, tabname='MARA'
 def fetch_dsp(token: str, top: int = 20):
-    url = f"{HOSTNAME}{RESOURCE}"        # resource ends at entity-set name
+    url = f"{HOSTNAME}{RESOURCE}" 
     params = {
         #"$filter": f"TABNAME eq '{tabname}'",
         "$top":    top,
     }
     r = requests.get(
         url,
-        params=params,                    # requests adds ? and encodes %24 etc.
+        params=params, 
         headers={
             "Authorization": f"Bearer {token}",
             "Accept": "application/json",
