@@ -3,6 +3,7 @@ import requests
 import json
 from dotenv import load_dotenv
 import base64
+import jwt
 
 load_dotenv()
 
@@ -46,7 +47,7 @@ def fetch_dsp(token: str, top: int):
         params=params,
         headers={
             "Authorization": f"Bearer {token}",
-            "Accept": "application/json",
+            "Accept": "application/json"
         },
         timeout=300,
     )
@@ -56,7 +57,8 @@ def fetch_dsp(token: str, top: int):
 
 def main():
     token = get_token_client_credentials()
-    data  = fetch_dsp(token, top=10)
+    print(jwt.decode(token, options={"verify_signature": False}))
+    data  = fetch_dsp(token, top=10)    
     print(json.dumps(data, indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":
