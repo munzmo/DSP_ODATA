@@ -36,7 +36,7 @@ def get_token_client_credentials():
     r.raise_for_status()
     return r.json()["access_token"]
 
-def fetch_dsp(token: str, top: int = 20):
+def fetch_dsp(token: str, top: int):
     url = f"{HOSTNAME}{RESOURCE}"
     params = {
         "$top": top,
