@@ -1,6 +1,7 @@
 import os, requests, json
 from urllib.parse import urlencode, quote_plus
 from dotenv import load_dotenv
+import jwt
 
 load_dotenv()
 
@@ -60,6 +61,8 @@ def fetch_dsp(token: str, top: int = 20):
 def main():
     code  = get_auth_code()
     token = exchange_code_for_token(code)
+    claims = jwt.decode(token, options={"verify_signature": False})
+    print(claims)
     data  = fetch_dsp(token, top=10)
 
     print(json.dumps(data, indent=2, ensure_ascii=False))
