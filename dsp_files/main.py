@@ -13,7 +13,7 @@ CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 # URI from DSP
 RESOURCE = "api/v1/dwc/consumption/relational/MHP_PLAYGROUND/GV_DD03L_002/GV_DD03L_002"
 # Limit output
-TOP = 20
+#TOP = 20
 
 
 def get_auth_code() -> str:
@@ -37,12 +37,12 @@ def exchange_code_for_token(code: str) -> str:
     r.raise_for_status()
     return r.json()["access_token"]
 
-# tabname: str, tabname='MARA'
-def fetch_dsp(token: str, top: int = 20):
+# tabname: str, tabname='MARA' top: int = 20
+def fetch_dsp(token: str ):
     url = f"{HOSTNAME}{RESOURCE}" 
     params = {
         #"$filter": f"TABNAME eq '{tabname}'",
-        "$top":    top,
+        #"$top":    top,
     }
     r = requests.get(
         url,
@@ -63,7 +63,7 @@ def main():
     token = exchange_code_for_token(code)
     claims = jwt.decode(token, options={"verify_signature": False})
     print(claims)
-    data  = fetch_dsp(token, top=10)
+    data  = fetch_dsp(token)
 
     print(json.dumps(data, indent=2, ensure_ascii=False))
 
