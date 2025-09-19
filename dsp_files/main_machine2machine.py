@@ -9,10 +9,10 @@ load_dotenv()
 
 AUTH_URL        = os.environ["DSP_AUTH_URL"] 
 HOSTNAME        = os.environ["DSP_BASE_URL"]
-CLIENT_ID       = os.environ["CLIENT_ID_API_ACCESS"]
-CLIENT_SECRET   = os.environ["CLIENT_SECRET_API_ACCESS"]
+CLIENT_ID       = os.environ["CLIENT_ID_TEC"]
+CLIENT_SECRET   = os.environ["CLIENT_SECRET_TEC"]
 
-RESOURCE = "api/v1/dwc/consumption/relational/MHP_PLAYGROUND/GV_DD03L_002/GV_DD03L_002"
+RESOURCE = "api/v1/datasphere/consumption/relational/MHP_PLAYGROUND/GV_DD03L_002/GV_DD03L_002"
 TOP = 20
 
 def get_token_client_credentials():
